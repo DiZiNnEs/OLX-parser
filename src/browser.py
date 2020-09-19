@@ -28,8 +28,7 @@ class Browser:
 Номер телефона: {phone}
 Ссылка на товар: {x}
 ''')
-            except:
-                pass
-            # print(driver.page_source)
+            except KeyboardInterrupt as ex:
+                print(ex)
 
 
