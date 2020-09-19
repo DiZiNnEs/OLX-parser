@@ -48,7 +48,9 @@ class Browser:
             except:
                 pass
 
-        json_test = json.dumps(all_dates, indent=4)
+        json_test = json.dumps(all_dates, indent=4, ensure_ascii=False)
 
         with open('result.json', 'w', encoding='utf8') as json_file:
             json_file.write(json_test)
+
+        return json_test
