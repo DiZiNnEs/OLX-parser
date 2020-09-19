@@ -21,7 +21,7 @@ async def async_main() -> None:
 
     # print(await html_handler.html_processing())
     # print(await page_parser.page_parse())
-    await browser.get_html(await html_handler.html_processing())
+    print(await browser.get_html(await html_handler.html_processing()))
 
 
 def main() -> None:

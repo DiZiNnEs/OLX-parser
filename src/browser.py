@@ -12,7 +12,7 @@ class Browser:
         pass
 
     async def get_html(self, links):
-        test = []
+        all_dates = []
         boolean_for_delete = 0
         ad_number = 1
         driver = webdriver.Chrome('/home/dizinnes/Downloads/chromedriver')
@@ -25,26 +25,27 @@ class Browser:
 
                 data = {
                     "ad_number": ad_number,
-                    "title": soup.select_one('div.offer-titlebox>h1').get_text(),
-                    "username": soup.select_one('h4>a').get_text(),
+                    "title": soup.select_one('div.offer-titlebox > h1').get_text(),
+                    "username": soup.select_one('h4 > a').get_text(),
                     "price": soup.select_one('strong.pricelabel__value.not-arranged').get_text(),
                     "description": soup.select_one('div.clr.lheight20.large').get_text(),
-                    "phone_number": soup.select_one('div.contactitem>strong').get_text(),
+                    "phone_number": soup.select_one('div.contactitem > strong').get_text(),
                     "link_to_page": page_link,
                 }
 
-                if os.path.isfile('result.json'):
-                    data_list = [data]
-                else:
-                    with open('result.json', 'w', encoding='utf8') as file:
-                        data_list = file.read()
-                    test.append(data_list)
+                # if not os.path.exists('result.json'):
+                #     data_list = [data]
+                # else:
+                #     with open('result.json', 'w', encoding='utf8') as file:
+                #         data_list = json.loads(file.read())
+                #     test.append(data_list)
+                #
+                # json_string = json.dumps(data_list, indent=4)
+                # with open('result.json', 'w', encoding='utf8') as file2:
+                #     file2.write(json_string)
 
-                json_string = json.dumps(test, indent=4)
-                with open('result.json', 'w', encoding='utf8') as file2:
-                    file2.write(json_string)
-
-
+                all_dates.append(data)
+                print(all_dates)
 
                 json_str = json.dumps(data, indent=4)
                 with open('result.json', 'w', encoding='utf8') as json_file:
@@ -87,3 +88,5 @@ class Browser:
                 print('The browser was closed before the program terminated')
             except:
                 pass
+
+        return all_dates
