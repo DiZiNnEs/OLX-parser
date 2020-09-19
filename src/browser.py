@@ -30,7 +30,7 @@ class Browser:
 
 ОБЪЯВЛЕНИЕ НОМЕР {ad_number}
 Название: {title}
-Имя пользователя: 
+Имя пользователя: {username}
 Цена: {price}
 Описание: {description}
 Номер телефона: {phone}
@@ -45,7 +45,7 @@ class Browser:
 
 ОБЪЯВЛЕНИЕ НОМЕР {ad_number}
 Название: {title}
-Имя пользователя: 
+Имя пользователя: {username}
 Цена: {price}
 Описание: {description}
 Номер телефона: {phone}
