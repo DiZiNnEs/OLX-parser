@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 import time
 import json
-import os
+import os.path
 
 
 class Browser:
@@ -12,6 +12,7 @@ class Browser:
         pass
 
     async def get_html(self, links):
+        test = []
         boolean_for_delete = 0
         ad_number = 1
         driver = webdriver.Chrome('/home/dizinnes/Downloads/chromedriver')
@@ -32,6 +33,16 @@ class Browser:
                     "link_to_page": page_link,
                 }
 
+                if os.path.isfile('result.json'):
+                    data_list = [data]
+                else:
+                    with open('result.json', 'w', encoding='utf8') as file:
+                        data_list = file.read()
+                    test.append(data_list)
+
+                json_string = json.dumps(test, indent=4)
+                with open('result.json', 'w', encoding='utf8') as file2:
+                    file2.write(json_string)
 
 
 
