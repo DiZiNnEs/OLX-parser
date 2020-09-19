@@ -3,6 +3,8 @@ from selenium.common import exceptions as selenium_exceptions
 from bs4 import BeautifulSoup
 
 import time
+import json
+import os
 
 
 class Browser:
@@ -19,21 +21,34 @@ class Browser:
                 driver.find_element_by_css_selector('span.button.inverted.spoiler').click()
                 time.sleep(0.2)
                 soup = BeautifulSoup(driver.page_source, 'lxml')
-                username = soup.select_one('h4>a').get_text()
-                title = soup.select_one('div.offer-titlebox>h1').get_text()
-                price = soup.select_one('strong.pricelabel__value.not-arranged').get_text()
-                description = soup.select_one('div.clr.lheight20.large').get_text()
-                phone = soup.select_one('div.contactitem>strong').get_text()
+
+                data = {
+                    "ad_number": ad_number,
+                    "title": soup.select_one('div.offer-titlebox>h1').get_text(),
+                    "username": soup.select_one('h4>a').get_text(),
+                    "price": soup.select_one('strong.pricelabel__value.not-arranged').get_text(),
+                    "description": soup.select_one('div.clr.lheight20.large').get_text(),
+                    "phone_number": soup.select_one('div.contactitem>strong').get_text(),
+                    "link_to_page": page_link,
+                }
+
+
+
+
+                json_str = json.dumps(data, indent=4)
+                with open('result.json', 'w', encoding='utf8') as json_file:
+                    json_file.write(json_str)
+
+
                 if boolean_for_delete == 0:
                     with open('result.txt', 'w') as file_:
                         file_.write(f'''
-
 ОБЪЯВЛЕНИЕ НОМЕР {ad_number}
-Название: {title}
-Имя пользователя: {username}
-Цена: {price}
-Описание: {description}
-Номер телефона: {phone}
+Название: {soup.select_one('div.offer-titlebox>h1').get_text()}
+Имя пользователя: {soup.select_one('h4>a').get_text()}
+Цена: {soup.select_one('strong.pricelabel__value.not-arranged').get_text()}
+Описание: {soup.select_one('div.clr.lheight20.large').get_text()}
+Номер телефона: {soup.select_one('div.contactitem>strong').get_text()}
 Ссылка на товар: {page_link}
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -42,28 +57,17 @@ class Browser:
                 else:
                     with open('result.txt', 'a') as file:
                         file.write(f'''
-
 ОБЪЯВЛЕНИЕ НОМЕР {ad_number}
-Название: {title}
-Имя пользователя: {username}
-Цена: {price}
-Описание: {description}
-Номер телефона: {phone}
+Название: {soup.select_one('div.offer-titlebox>h1').get_text()}
+Имя пользователя: {soup.select_one('h4>a').get_text()}
+Цена: {soup.select_one('strong.pricelabel__value.not-arranged').get_text()}
+Описание: {soup.select_one('div.clr.lheight20.large').get_text()}
+Номер телефона: {soup.select_one('div.contactitem>strong').get_text()}
 Ссылка на товар: {page_link}
 #-----------------------------------------------------------------------------------------------------------------------
 
 ''')
-
                 ad_number += 1
-
-                print(f'''
-Название: {title}
-Имя пользователя: {username}
-Цена: {price}
-Описание: {description}
-Номер телефона: {phone}
-Ссылка на товар: {page_link}
-''')
             except KeyboardInterrupt as ex:
                 print(ex)
                 print('Input from user is ended')
