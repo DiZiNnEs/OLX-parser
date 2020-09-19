@@ -24,7 +24,6 @@ async def async_main() -> None:
     await browser.get_html(await html_handler.html_processing())
 
 
-
 def main() -> None:
     """
     Get async function from async_main() and run here
