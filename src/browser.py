@@ -13,7 +13,6 @@ class Browser:
 
     async def get_html(self, links):
         all_dates = []
-        boolean_for_delete = 0
         ad_number = 1
         driver = webdriver.Chrome('/home/dizinnes/Downloads/chromedriver')
         for page_link in links:
@@ -33,52 +32,12 @@ class Browser:
                     "link_to_page": page_link,
                 }
 
-                # if not os.path.exists('result.json'):
-                #     data_list = [data]
-                # else:
-                #     with open('result.json', 'w', encoding='utf8') as file:
-                #         data_list = json.loads(file.read())
-                #     test.append(data_list)
-                #
-                # json_string = json.dumps(data_list, indent=4)
-                # with open('result.json', 'w', encoding='utf8') as file2:
-                #     file2.write(json_string)
-
                 all_dates.append(data)
-                print(all_dates)
 
                 json_str = json.dumps(data, indent=4)
                 with open('result.json', 'w', encoding='utf8') as json_file:
                     json_file.write(json_str)
 
-
-                if boolean_for_delete == 0:
-                    with open('result.txt', 'w') as file_:
-                        file_.write(f'''
-ОБЪЯВЛЕНИЕ НОМЕР {ad_number}
-Название: {soup.select_one('div.offer-titlebox>h1').get_text()}
-Имя пользователя: {soup.select_one('h4>a').get_text()}
-Цена: {soup.select_one('strong.pricelabel__value.not-arranged').get_text()}
-Описание: {soup.select_one('div.clr.lheight20.large').get_text()}
-Номер телефона: {soup.select_one('div.contactitem>strong').get_text()}
-Ссылка на товар: {page_link}
-
-#-----------------------------------------------------------------------------------------------------------------------
-''')
-                    boolean_for_delete += 1
-                else:
-                    with open('result.txt', 'a') as file:
-                        file.write(f'''
-ОБЪЯВЛЕНИЕ НОМЕР {ad_number}
-Название: {soup.select_one('div.offer-titlebox>h1').get_text()}
-Имя пользователя: {soup.select_one('h4>a').get_text()}
-Цена: {soup.select_one('strong.pricelabel__value.not-arranged').get_text()}
-Описание: {soup.select_one('div.clr.lheight20.large').get_text()}
-Номер телефона: {soup.select_one('div.contactitem>strong').get_text()}
-Ссылка на товар: {page_link}
-#-----------------------------------------------------------------------------------------------------------------------
-
-''')
                 ad_number += 1
             except KeyboardInterrupt as ex:
                 print(ex)
@@ -89,4 +48,7 @@ class Browser:
             except:
                 pass
 
-        return all_dates
+        json_test = json.dumps(all_dates, indent=4)
+
+        with open('result.json', 'w', encoding='utf8') as json_file:
+            json_file.write(json_test)
