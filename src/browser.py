@@ -2,7 +2,6 @@ from selenium import webdriver
 from selenium.common import exceptions as selenium_exceptions
 from bs4 import BeautifulSoup
 
-import selenium
 import time
 
 
@@ -11,6 +10,8 @@ class Browser:
         pass
 
     async def get_html(self, links):
+        boolean_for_delete = 0
+        ad_number = 1
         driver = webdriver.Chrome('/home/dizinnes/Downloads/chromedriver')
         for page_link in links:
             driver.get(page_link)
@@ -22,6 +23,22 @@ class Browser:
                 price = soup.select_one('strong.pricelabel__value.not-arranged').get_text()
                 description = soup.select_one('div.clr.lheight20.large').get_text()
                 phone = soup.select_one('div.contactitem>strong').get_text()
+                if boolean_for_delete == 0:
+                    open('result.txt', 'w')
+                    boolean_for_delete += 1
+                else:
+                    with open('result.txt', 'a') as file:
+                        file.write(f'''
+ОБЪЯВЛЕНИЕ НОМЕР {ad_number}
+Название: {title}
+Цена: {price}
+Описание: {description}
+Номер телефона: {phone}
+Ссылка на товар: {page_link}
+''')
+
+                ad_number += 1
+
                 print(f'''
 Название: {title}
 Цена: {price}
@@ -35,4 +52,3 @@ class Browser:
                 print('The browser was closed before the program terminated')
             except:
                 pass
-
