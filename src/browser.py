@@ -32,12 +32,8 @@ class Browser:
                 }
 
                 all_dates.append(data)
-
-                json_str = json.dumps(data, indent=4)
-                with open('result.json', 'w', encoding='utf8') as json_file:
-                    json_file.write(json_str)
-
                 ad_number += 1
+
             except KeyboardInterrupt as ex:
                 print(ex)
                 print('Input from user is ended')
@@ -47,9 +43,9 @@ class Browser:
             except:
                 pass
 
-        json_test = json.dumps(all_dates, indent=4, ensure_ascii=False)
+        dates_to_json = json.dumps(all_dates, indent=4, ensure_ascii=False)
 
         with open('result.json', 'w', encoding='utf8') as json_file:
-            json_file.write(json_test)
+            json_file.write(dates_to_json)
 
-        return json_test
+        return dates_to_json

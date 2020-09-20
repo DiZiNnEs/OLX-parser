@@ -20,7 +20,7 @@ class HtmlHandler:
         """
         # product = str(input('Ведите название продукта: ')) # Потом откоментируй
         links = []
-        soup = BeautifulSoup(await self.request.request('молоко'), 'lxml')
+        soup = BeautifulSoup(await self.request.request('смартфон'), 'lxml')
         for html in soup.select('div.offer-wrapper'):
             url = html.select_one('a.marginright5.link.linkWithHash.detailsLink')['href']
             links.append(url)
