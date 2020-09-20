@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 
 import time
 import json
-import os.path
 
 
 class Browser:
