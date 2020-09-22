@@ -28,7 +28,7 @@ class HtmlHandler:
 
     # TestCode
 
-    async def html_processing2(self, links__) -> List[str]:
+    async def html_processing_2(self, links__) -> List[str]:
         """
         The method returns links to the  product in the List
         :return: List[str]

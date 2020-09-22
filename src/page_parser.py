@@ -30,7 +30,7 @@ class PageParser:
 
         return pages_list
 
-    async def page_parse_test(self, product) -> List[str]:
+    async def page_parse_2(self, product) -> List[str]:
         """
         The function parse pages
         :return: List

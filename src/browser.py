@@ -53,7 +53,7 @@ class Browser:
 
         # TestCode
 
-    async def get_html_test(self, links):
+    async def get_html_2(self, links):
         all_dates = []
         ad_number = 1
         driver = webdriver.Chrome('/home/dizinnes/Downloads/chromedriver')
