@@ -6,7 +6,8 @@ class CLI:
         pass
 
     def greeting(self):
-        pass
+        print('Приветсвую пользователь')
+        print('Я беру результаты из сайта www.olx.kz и сохраняю их в файлах типа .json')
 
     def read(self):
         for json_files in ['result.json', 'result_2.json']:
