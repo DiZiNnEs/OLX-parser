@@ -17,8 +17,9 @@ async def async_main() -> None:
     user_agent = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
     }
+    product_entered_by_user = str(input('Введите название продукта: '))
     request = Request(user_agent=user_agent)
-    html_handler = HtmlHandler(request)
+    html_handler = HtmlHandler(request, product=product_entered_by_user)
     page_parser = PageParser(request)
     browser = Browser()
     cli = CLI()
@@ -28,7 +29,6 @@ async def async_main() -> None:
     # await check_pages.if_pages_is_exist()
 
     # WORK TEST CODE
-    product_entered_by_user = str(input('Введите название продукта: '))
     test = await check_pages.check_page(product_entered_by_user)
     print(await browser.get_html(await html_handler.html_processing()))
     if test is True:
