@@ -18,10 +18,27 @@ class HtmlHandler:
         The method returns links to the  product in the List
         :return: List[str]
         """
-        # product = str(input('Ведите название продукта: ')) # Потом откоментируй
+        product = str(input('Ведите название продукта (htmlHandler): ')) # Потом откоментируй
         links = []
-        soup = BeautifulSoup(await self.request.request('смартфон'), 'lxml')
+        soup = BeautifulSoup(await self.request.request(product), 'lxml')
         for html in soup.select('div.offer-wrapper'):
             url = html.select_one('a.marginright5.link.linkWithHash.detailsLink')['href']
             links.append(url)
         return links
+
+    # TestCode
+
+    async def html_processing2(self, links__) -> List[str]:
+        """
+        The method returns links to the  product in the List
+        :return: List[str]
+        """
+        # product = str(input('Ведите название продукта: ')) # Потом откоментируй
+        links = []
+        soup = BeautifulSoup(links__, 'lxml')
+        for html in soup.select('div.offer-wrapper'):
+            url = html.select_one('a.marginright5.link.linkWithHash.detailsLink')['href']
+            links.append(url)
+        return links
+
+

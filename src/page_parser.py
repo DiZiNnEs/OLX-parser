@@ -25,7 +25,23 @@ class PageParser:
             try:
                 pages_list.append(pages.select_one('a')['href'] if pages.select_one('a')['href'] is not None else None)
             except TypeError as ex:
-                # 'NoneType' object is not subscriptable
+                print('`NonType` object is not subscribable')
+                pass
+
+        return pages_list
+
+    async def page_parse_test(self, product) -> List[str]:
+        """
+        The function parse pages
+        :return: List
+        """
+        pages_list = []
+        soup = BeautifulSoup(await self.request.request(product), 'lxml')
+        for pages in soup.select('div.pager.rel.clr>span.item.fleft'):
+            try:
+                pages_list.append(pages.select_one('a')['href'] if pages.select_one('a')['href'] is not None else None)
+            except TypeError as ex:
+                print('`NonType` object is not subscribable')
                 pass
 
         return pages_list

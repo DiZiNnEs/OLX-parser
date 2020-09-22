@@ -24,3 +24,13 @@ class Request:
         await session.close()
 
         return content
+
+    # TestCode
+    async def if_page_is_exist_requeest(self, link):
+        session = ClientSession()
+        async with session.get(headers=self.user_agent,
+                               url=link) as response:
+            content = await response.text()
+        await session.close()
+
+        return content
