@@ -28,7 +28,7 @@ class Browser:
                     "Имя продавца": soup.select_one('h4 > a').get_text().replace('\n', '').strip(),
                     "Цена": soup.select_one('strong.pricelabel__value.not-arranged').get_text(),
                     "Описание": soup.select_one('div.clr.lheight20.large').get_text().strip().replace('\n', ' '),
-                    "Номер телефона": soup.select_one('div.contactitem > strong').get_text(),
+                    "Номер телефона": soup.select_one('div.contactitem > strong').get_text() + ', ',
                     "Ссылка на объявление": page_link,
                 }
 
@@ -71,7 +71,7 @@ class Browser:
                     "Имя продавца": soup.select_one('h4 > a').get_text().replace('\n', '').strip(),
                     "Цена": soup.select_one('strong.pricelabel__value.not-arranged').get_text(),
                     "Описание": soup.select_one('div.clr.lheight20.large').get_text().strip().replace('\n', ' '),
-                    "Номер телефона": soup.select_one('div.contactitem > strong').get_text(),
+                    "Номер телефона": soup.select_one('div.contactitem > strong').get_text() + ', ',
                     "Ссылка на объявление": page_link,
                 }
 
