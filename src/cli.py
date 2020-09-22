@@ -5,6 +5,9 @@ class CLI:
     def __init__(self):
         pass
 
+    def greeting(self):
+        pass
+
     def read(self):
         for json_files in ['result.json', 'result_2.json']:
             with open(json_files) as f:
