@@ -17,12 +17,15 @@ async def async_main() -> None:
     user_agent = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
     }
+    cli = CLI()
+    cli.greeting()
+
     product_entered_by_user = str(input('Введите название продукта: '))
     request = Request(user_agent=user_agent)
     html_handler = HtmlHandler(request, product=product_entered_by_user)
     page_parser = PageParser(request)
     browser = Browser()
-    cli = CLI()
+
     # Test
     check_pages = CheckPage(request=request, browser=browser, page_parser=page_parser, html_handler=html_handler)
     # await check_pages.check_page()
