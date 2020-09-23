@@ -38,6 +38,17 @@ class HtmlHandler:
 
         return pages
 
-    async def get_links(self, list_pages) -> None:
-        pass
+    async def get_urls(self, list_pages) -> None:
+        html = ''
+        links_of_pages = []
+        for x in list_pages:
+            html = await self.request.request_for_links(link=x)
+
+        soup = BeautifulSoup(html, 'lxml')
+
+        for i in soup.select('div.offer-wrapper'):
+            url = i.select_one('a.marginright5.link.linkWithHash.detailsLink')['href']
+            links_of_pages.append(url)
+
+        print(links_of_pages)
 
