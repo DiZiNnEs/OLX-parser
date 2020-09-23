@@ -34,8 +34,9 @@ async def async_main() -> None:
     print(links_to_pages)
     print(links_to_url)
 
-    main_parser = await browser.selenium(urls=links_to_url)
-    json.add(results=main_parser)
+    # main_parser = await browser.selenium(urls=links_to_url)
+    # json.add(results=main_parser)
+    json.read()
 
     # await browser.selenium(urls=)
 
