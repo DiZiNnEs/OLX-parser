@@ -43,6 +43,7 @@ class HtmlHandler:
         links_of_pages = []
         for x in list_pages:
             html = await self.request.request_for_links(link=x)
+            break
 
         soup = BeautifulSoup(html, 'lxml')
 
