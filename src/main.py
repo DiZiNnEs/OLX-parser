@@ -2,9 +2,6 @@ from asyncio import run
 from selenium import webdriver
 
 from .browser import Browser
-from .check_pages import CheckPage
-from .cli import CLI
-from .gui import GUI
 from .html_handler import HtmlHandler
 from .json import Json
 from .page_parser import PageParser
