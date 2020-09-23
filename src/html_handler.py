@@ -26,7 +26,7 @@ class HtmlHandler:
             links.append(url)
         return links
 
-    async def get_pages(self, html_product, product_name) -> None:
+    async def get_pages(self, html_product: str, product_name: str) -> List[str]:
         pages = [f'https://www.olx.kz/kokshetau/q-{product_name}']
         soup = BeautifulSoup(html_product, 'lxml')
         for html in soup.select('div.pager.rel.clr>span.item.fleft'):
@@ -36,4 +36,4 @@ class HtmlHandler:
             except TypeError as ex:
                 print('One of the objects is None')
 
-        print(pages)
+        return pages
