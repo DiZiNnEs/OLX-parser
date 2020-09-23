@@ -38,7 +38,7 @@ class HtmlHandler:
 
         return pages
 
-    async def get_urls(self, list_pages) -> None:
+    async def get_urls(self, list_pages: List[str]) -> List[str]:
         html = ''
         links_of_pages = []
         for x in list_pages:
@@ -50,5 +50,5 @@ class HtmlHandler:
             url = i.select_one('a.marginright5.link.linkWithHash.detailsLink')['href']
             links_of_pages.append(url)
 
-        print(links_of_pages)
+        return links_of_pages
 
