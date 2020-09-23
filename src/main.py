@@ -1,4 +1,5 @@
 from asyncio import run
+from selenium import webdriver
 
 from .browser import Browser
 from .check_pages import CheckPage
@@ -17,18 +18,21 @@ async def async_main() -> None:
     user_agent = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
     }
+    driver = webdriver.Chrome('/home/dizinnes/Downloads/chromedriver')
 
     product_entered_by_user = 'корова'  # str(input('Введите название продукта: '))
 
     request = Request(user_agent=user_agent, product_name=product_entered_by_user)
     html_handler = HtmlHandler(request=request)
     html = await request.request()
+    browser = Browser(webdriver_=driver)
 
     links_to_pages = await html_handler.get_pages(html_product=html, product_name=product_entered_by_user)
     links_to_url = await html_handler.get_urls(list_pages=links_to_pages)
     print(links_to_pages)
     print(links_to_url)
 
+    await browser.get_html(links=links_to_url)
 
     # cli = CLI()
     # cli.greeting()

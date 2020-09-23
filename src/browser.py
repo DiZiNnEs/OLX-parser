@@ -7,8 +7,8 @@ import json
 
 
 class Browser:
-    def __init__(self):
-        pass
+    def __init__(self, webdriver_: webdriver):
+        self.webdriver = webdriver_
 
     async def get_html(self, links):
         all_dates = []
@@ -42,7 +42,7 @@ class Browser:
                 print(ex)
                 print('The browser was closed before the program terminated')
             except:
-                pass
+                print('An error has occurred')
 
         dates_to_json = json.dumps(all_dates, indent=4, ensure_ascii=False)
 
@@ -51,3 +51,5 @@ class Browser:
 
         return dates_to_json
 
+    async def selenium(self, urls):
+        results = []
