@@ -17,7 +17,7 @@ async def async_main() -> None:
     }
     driver = webdriver.Chrome('/home/dizinnes/Downloads/chromedriver')
 
-    product_entered_by_user = 'квартира'  # str(input('Введите название продукта: '))
+    product_entered_by_user = str(input('Введите название продукта: '))
 
     request = Request(user_agent=user_agent, product_name=product_entered_by_user)
     html_handler = HtmlHandler(request=request)
