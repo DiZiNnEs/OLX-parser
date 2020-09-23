@@ -14,6 +14,12 @@ class HtmlHandler:
         self.request = request
 
     async def get_pages(self, html_product: str, product_name: str) -> List[str]:
+        """
+        Request works here and made first request to server
+        :param html_product: str
+        :param product_name: str
+        :return: List[str]
+        """
         pages = [f'https://www.olx.kz/kokshetau/q-{product_name}']
         soup = BeautifulSoup(html_product, 'lxml')
         for html in soup.select('div.pager.rel.clr>span.item.fleft'):
@@ -26,6 +32,11 @@ class HtmlHandler:
         return pages
 
     async def get_urls(self, list_pages: List[str]) -> List[str]:
+        """
+        Request works for another links
+        :param list_pages: List[str]
+        :return: List[str]
+        """
         html = ''
         links_of_pages = []
         for x in list_pages:
