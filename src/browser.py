@@ -14,9 +14,18 @@ import time
 
 class Browser:
     def __init__(self, webdriver_: webdriver) -> None:
+        """
+        constructor takes one argument
+        :param webdriver_: webdriver
+        """
         self.webdriver = webdriver_
 
     async def selenium(self, urls: List[str]) -> List[Dict[str, Union[int, Any]]]:
+        """
+        Selenium works here and information is collected
+        :param urls: List[str]
+        :return: List[Dict[str, Union[int, Any]]]
+        """
         results = []
         ad_number = 1
         for page in urls:
