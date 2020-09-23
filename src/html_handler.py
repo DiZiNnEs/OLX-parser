@@ -27,19 +27,5 @@ class HtmlHandler:
             links.append(url)
         return links
 
-    # TestCode
-
-    async def html_processing_2(self, links__) -> List[str]:
-        """
-        The method returns links to the  product in the List
-        :return: List[str]
-        """
-        # product = str(input('Ведите название продукта: ')) # Потом откоментируй
-        links = []
-        soup = BeautifulSoup(links__, 'lxml')
-        for html in soup.select('div.offer-wrapper'):
-            url = html.select_one('a.marginright5.link.linkWithHash.detailsLink')['href']
-            links.append(url)
-        return links
 
 

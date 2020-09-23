@@ -18,10 +18,10 @@ async def async_main() -> None:
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
     }
 
-    product_entered_by_user = str(input('Введите название продукта: '))
     request = Request(user_agent=user_agent)
-    print(await request.request(product=product_entered_by_user))
-
+    html = HtmlHandler(request=request, product='Кролик')
+    product_entered_by_user = str(input('Введите название продукта: '))
+    print(await html.html_processing())
 
 
     # cli = CLI()
