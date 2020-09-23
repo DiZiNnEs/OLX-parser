@@ -19,9 +19,11 @@ async def async_main() -> None:
     }
 
     request = Request(user_agent=user_agent)
-    html = HtmlHandler(request=request, product='Кролик')
+    html_handler = HtmlHandler(request=request)
     product_entered_by_user = str(input('Введите название продукта: '))
-    print(await html.html_processing())
+
+    html = await request.request(product=product_entered_by_user)
+    print(await html_handler.get_pages(html_product=html))
 
 
     # cli = CLI()
