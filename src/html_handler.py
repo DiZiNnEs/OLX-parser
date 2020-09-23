@@ -37,3 +37,7 @@ class HtmlHandler:
                 print('One of the objects is None')
 
         return pages
+
+    async def get_links(self, list_pages) -> None:
+        pass
+
