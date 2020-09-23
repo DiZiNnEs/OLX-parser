@@ -27,5 +27,9 @@ class HtmlHandler:
             links.append(url)
         return links
 
-
+    async def get_links(self, html_product) -> None:
+        links = []
+        soup = BeautifulSoup(html_product, 'lxml')
+        for html in soup.select(''):
+            pass
 
