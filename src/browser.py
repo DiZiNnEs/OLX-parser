@@ -64,7 +64,6 @@ class Browser:
                 time.sleep(0.2)
                 soup = BeautifulSoup(self.webdriver.page_source, 'lxml')
                 data = {
-                    "Страница": 1,
                     "Номер объявление": ad_number,
                     "Название": soup.select_one('div.offer-titlebox > h1').get_text().strip().replace('\n', ''),
                     "Имя продавца": soup.select_one('h4 > a').get_text().replace('\n', '').strip(),
@@ -73,11 +72,10 @@ class Browser:
                     "Номер телефона": soup.select_one('div.contactitem > strong').get_text() + ', ',
                     "Ссылка на объявление": page,
                 }
+                results.append(data)
             except:
                 pass
 
-            print(data)
-            results.append(data)
             ad_number += 1
 
         return results
