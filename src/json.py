@@ -11,6 +11,7 @@ from .browser import Browser
 
 class Json:
     def __init__(self, browser: Browser) -> None:
+
         self.browser = browser
 
     def add(self, results: List[Dict[str, Union[int, Any]]]) -> None:
