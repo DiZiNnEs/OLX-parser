@@ -4,7 +4,6 @@ from selenium import webdriver
 from .browser import Browser
 from .html_handler import HtmlHandler
 from .json import Json
-from .page_parser import PageParser
 from .request import Request
 
 
