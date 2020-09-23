@@ -1,3 +1,5 @@
+from typing import List, Dict, Union, Any
+
 from selenium import webdriver as wd
 from selenium import webdriver
 from selenium.common import exceptions as selenium_exceptions
@@ -52,13 +54,11 @@ class Browser:
 
         return dates_to_json
 
-    async def selenium(self, urls):
-        data = {}
+    async def selenium(self, urls: List[str]) -> List[Dict[str, Union[int, Any]]]:
         results = []
         ad_number = 1
         for page in urls:
             self.webdriver.get(page)
-
             try:
                 self.webdriver.find_element_by_css_selector('span.button.inverted.spoiler').click()
                 time.sleep(0.2)
@@ -73,9 +73,10 @@ class Browser:
                     "Ссылка на объявление": page,
                 }
                 results.append(data)
-            except:
-                pass
-
+            except AttributeError as ex:
+                print('Какой-то атрибут не поддерживает `get_text`')
+                print(ex)
+            except selenium_exceptions.NoSuchElementException as ex:
+                print(ex)
             ad_number += 1
-
         return results
