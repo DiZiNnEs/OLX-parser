@@ -18,7 +18,7 @@ async def async_main() -> None:
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
     }
 
-    product_entered_by_user = 'яйца'  # str(input('Введите название продукта: '))
+    product_entered_by_user = 'Коровы'  # str(input('Введите название продукта: '))
 
     request = Request(user_agent=user_agent, product_name=product_entered_by_user)
     html_handler = HtmlHandler(request=request)
@@ -26,6 +26,7 @@ async def async_main() -> None:
 
     links_to_pages = await html_handler.get_pages(html_product=html, product_name=product_entered_by_user)
     links_to_url = await html_handler.get_urls(list_pages=links_to_pages)
+    print(links_to_pages)
     print(links_to_url)
 
 
