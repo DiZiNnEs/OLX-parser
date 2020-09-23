@@ -13,7 +13,7 @@ import time
 
 
 class Browser:
-    def __init__(self, webdriver_: webdriver):
+    def __init__(self, webdriver_: webdriver) -> None:
         self.webdriver = webdriver_
 
     async def selenium(self, urls: List[str]) -> List[Dict[str, Union[int, Any]]]:
