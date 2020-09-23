@@ -20,11 +20,10 @@ async def async_main() -> None:
 
     request = Request(user_agent=user_agent)
     html_handler = HtmlHandler(request=request)
-    product_entered_by_user = str(input('Введите название продукта: '))
+    product_entered_by_user = 'машина'  # str(input('Введите название продукта: '))
 
     html = await request.request(product=product_entered_by_user)
-    print(await html_handler.get_pages(html_product=html))
-
+    print(await html_handler.get_pages(html_product=html, product_name=product_entered_by_user))
 
     # cli = CLI()
     # cli.greeting()
@@ -48,7 +47,6 @@ async def async_main() -> None:
     #     pass
     # # WORK TEST CODE
     # cli.read()
-
 
     # print(await html_handler.html_processing())
     # print(await page_parser.page_parse())
