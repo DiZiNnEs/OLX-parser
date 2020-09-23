@@ -32,7 +32,9 @@ async def async_main() -> None:
     print(links_to_pages)
     print(links_to_url)
 
-    await browser.get_html(links=links_to_url)
+    print(await browser.selenium(urls=links_to_url))
+
+    # await browser.selenium(urls=)
 
     # cli = CLI()
     # cli.greeting()
