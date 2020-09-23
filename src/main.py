@@ -6,6 +6,7 @@ from .check_pages import CheckPage
 from .cli import CLI
 from .gui import GUI
 from .html_handler import HtmlHandler
+from .json import Json
 from .page_parser import PageParser
 from .request import Request
 
@@ -26,13 +27,15 @@ async def async_main() -> None:
     html_handler = HtmlHandler(request=request)
     html = await request.request()
     browser = Browser(webdriver_=driver)
+    json = Json(browser=browser)
 
     links_to_pages = await html_handler.get_pages(html_product=html, product_name=product_entered_by_user)
     links_to_url = await html_handler.get_urls(list_pages=links_to_pages)
     print(links_to_pages)
     print(links_to_url)
 
-    print(await browser.selenium(urls=links_to_url))
+    main_parser = await browser.selenium(urls=links_to_url)
+    json.add(results=main_parser)
 
     # await browser.selenium(urls=)
 
