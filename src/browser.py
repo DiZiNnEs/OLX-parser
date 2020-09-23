@@ -39,6 +39,7 @@ class Browser:
                 print('Какой-то атрибут не поддерживает `get_text`')
                 print(ex)
             except selenium_exceptions.NoSuchElementException as ex:
+                print('Какой-то из элементов не сущетсвует или преждевременно закрыли браузер')
                 print(ex)
             ad_number += 1
         return results
