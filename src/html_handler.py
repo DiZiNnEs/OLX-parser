@@ -13,19 +13,6 @@ class HtmlHandler:
         """
         self.request = request
 
-    async def html_processing(self) -> List[str]:
-        """
-        The method returns links to the  product in the List
-        :return: List[str]
-        """
-        product = str(input('Ведите название продукта (htmlHandler): '))  # Потом откоментируй
-        links = []
-        soup = BeautifulSoup(await self.request.request(product), 'lxml')
-        for html in soup.select('div.offer-wrapper'):
-            url = html.select_one('a.marginright5.link.linkWithHash.detailsLink')['href']
-            links.append(url)
-        return links
-
     async def get_pages(self, html_product: str, product_name: str) -> List[str]:
         pages = [f'https://www.olx.kz/kokshetau/q-{product_name}']
         soup = BeautifulSoup(html_product, 'lxml')
@@ -52,4 +39,3 @@ class HtmlHandler:
             links_of_pages.append(url)
 
         return links_of_pages
-
