@@ -1,12 +1,15 @@
-from typing import List, Dict, Union, Any
+from typing import (
+    List,
+    Dict,
+    Union,
+    Any
+)
 
-from selenium import webdriver as wd
 from selenium import webdriver
 from selenium.common import exceptions as selenium_exceptions
 from bs4 import BeautifulSoup
 
 import time
-import json
 
 
 class Browser:
