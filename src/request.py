@@ -14,7 +14,7 @@ class Request:
 
     async def request(self) -> str:
         """
-        The function make request
+        First request to get pages
         :param product: str
         :return: str
         """
@@ -28,7 +28,7 @@ class Request:
 
     async def request_for_links(self, link) -> str:
         """
-        The function make request
+        Second request to get another pages
         :param link:
         :param product: str
         :return: str
