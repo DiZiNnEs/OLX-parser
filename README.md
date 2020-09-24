@@ -7,7 +7,10 @@ Script for parsing olx.kz
 Use the git clone for install
 
 ```bash
-git clone link
+git clone https://github.com/DiZiNnEs/OLX-parser
+git cd OLX-parser
+pipenv install
+python3 runner.py
 ```
 
 ## Usage
@@ -23,3 +26,5 @@ Please make sure to update tests as appropriate.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+
