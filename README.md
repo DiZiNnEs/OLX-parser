@@ -28,3 +28,31 @@ Please make sure to update tests as appropriate.
 [MIT](https://choosealicense.com/licenses/mit/)
 
 
+# Парсер OLX
+
+Скрипт для парсинга чего либо на сайте www.olx.kz
+
+## Установка
+
+Используйте git clone для установки и следуйте следующим шагам:
+
+```bash
+git clone https://github.com/DiZiNnEs/OLX-parser
+git cd OLX-parser
+pipenv install
+python3 runner.py
+```
+
+## Использование
+
+```bash
+python3 parser.py
+```
+
+## Сотрудничать
+Запросы на pull request приветствуются. В случае серьезных изменений сначала откройте вопрос, чтобы обсудить, что вы хотите изменить.
+
+Не забудьте обновить тесты по мере необходимости.
+
+## Лицензия 
+[MIT](https://choosealicense.com/licenses/mit/)
