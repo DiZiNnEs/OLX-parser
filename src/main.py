@@ -12,7 +12,7 @@ async def async_main() -> None:
     When executing the function, it takes the entire method from src and sends it to `runner.py`
     :return: None
     """
-    print('Приветствую пользователь, я беру информацию с olx.kz и записываю в файл после чего вывожу их')
+
     user_agent = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
     }
@@ -33,7 +33,6 @@ async def async_main() -> None:
     json.add(browser)
     json.read()
 
-    print('Парсер закончил свою работу')
 
 
 def main() -> None:
