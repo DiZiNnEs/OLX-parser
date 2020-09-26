@@ -1,10 +1,13 @@
 from asyncio import run
-from selenium import webdriver
 
 from .browser import Browser
 from .html_handler import HtmlHandler
 from .json import Json
 from .request import Request
+
+from .cli import Cli
+
+from .config import user_agent, driver
 
 
 async def async_main() -> None:
@@ -12,12 +15,8 @@ async def async_main() -> None:
     When executing the function, it takes the entire method from src and sends it to `runner.py`
     :return: None
     """
-
-    user_agent = {
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
-    }
-    driver = webdriver.Chrome('/home/dizinnes/Downloads/chromedriver')
-
+    cli = Cli()
+    cli.welcome()
     product_entered_by_user = str(input('Введите название продукта: '))
 
     request = Request(user_agent=user_agent, product_name=product_entered_by_user)
@@ -32,7 +31,6 @@ async def async_main() -> None:
 
     json.add(browser)
     json.read()
-
 
 
 def main() -> None:
